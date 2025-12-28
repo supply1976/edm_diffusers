@@ -1,0 +1,61 @@
+mode: train
+seed: 42
+# device: cuda
+
+dataset:
+  type: local
+  path: data/images
+  extensions: [png, jpg, jpeg]
+  # For Hugging Face datasets:
+  # type: hf
+  # name: cifar10
+  # config:
+  # split: train
+  # image_column: image
+
+preprocess:
+  resize: 36
+  crop: center
+  crop_size: 32
+
+model:
+  image_size: 32
+  in_channels: 3
+  out_channels: 3
+  base_channels: 64
+  channel_mults: [1, 2, 2, 2]
+  attention_resolutions: [16]
+  layers_per_block: 2
+  dropout: 0.0
+
+training:
+  batch_size: 64
+  epochs: 20
+  iterations: 0
+  learning_rate: 2e-4
+  num_workers: 4
+  sigma_min: 0.002
+  sigma_max: 80.0
+  sigma_data: 0.5
+  predict_type: data
+  log_every: 100
+  save_every: 1000
+  output_dir: runs
+  ema:
+    enabled: true
+    decay: 0.999
+    update_every: 1
+
+sampling:
+  method: heun
+  steps: 40
+  sigma_min: 0.002
+  sigma_max: 80.0
+  rho: 7.0
+
+inference:
+  checkpoint: runs/checkpoint_0001000.pt
+  output: samples.png
+  batch_size: 16
+  seed: 0
+  use_ema: true

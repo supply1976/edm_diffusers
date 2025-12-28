@@ -1,0 +1,1 @@
+python scripts/train.py --dataset cifar10 --data-dir data --epochs 1 --batch-size 8 --download

@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pt
+*.pth
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+.data/
+data/
+runs/
+
+.venv/
+venv/

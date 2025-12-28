@@ -1,0 +1,1 @@
+python scripts/sample.py --checkpoint runs/checkpoint_0001000.pt --batch-size 16 --out samples.png
